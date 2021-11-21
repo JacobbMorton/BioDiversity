@@ -72,21 +72,27 @@ function buildCharts(sample) {
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
-    //  so the otu_ids with the most bacteria are last. 
+    // so the otu_ids with the most bacteria are last. 
     
 
     var yticks = otu_ids.sort((a, b) => a - b).slice(0,11).reverse();
-    console.log(yticks)
+    
+    var ylab = [];
 
+    for(i = 0; i < yticks.length; i++)
+    {
+      ylab.append("OTU " + yticks[i]);
+    };
+    console.log(ylab);
     // 8. Create the trace for the bar chart. 
     var barData = {
       x: sample_values,
-      y: yticks,
+      y: ylab,
       // width: [10,10,10,10,10,10,10,10,10,10],
       
       label: otu_ids,
       type: "bar",
-      orientation: "h"
+      // orientation: "h"
     };
     // 9. Create the layout for the bar chart. 
     var barLayout = {
